@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>My To-Do List</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+<link href="style.css" rel="stylesheet">
+ <script>
+        function fun() {
+            var t = document.getElementById("des");
+            var i = document.getElementById("itemList");
+            var idiv = document.createElement("div");
+            idiv.classList.add("todo-item");
+			var im = document.createElement("img");
+			im.src = 'tick.png';
+            im.alt = 'Complete';
+            im.width = 20;
+            var ispan = document.createElement("span");
+            ispan.innerText = t.value;
+
+            var ibutton = document.createElement("img");
+            ibutton.src = 'del2.png';
+            ibutton.alt = 'Delete';
+            ibutton.width = 20; 
+            ibutton.onclick = function() {
+                i.removeChild(idiv);
+            };
+			idiv.appendChild(im);
+
+            idiv.appendChild(ispan);
+            idiv.appendChild(ibutton);
+            i.appendChild(idiv);
+
+            t.value = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("des").addEventListener("focus", function() {
+                this.value = "";
+            });
+        });
+    </script>
+</head>
+<body>
+	<div class="todo-container">
+        <h2>My To-Do List</h2><br>
+        <img src="list.png" height="100px" width="100px"/><br><br>
+        <p>Type in the below field 👇 and Click Add Button to add your todo in the list</p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Eg: Walking" id="des" autofocus>
+            <button class="btn btn-dark" type="button" onclick="fun()">Add</button>
+        </div>
+        <div id="itemList"></div>
+    </div>
+</body>
+</html>
